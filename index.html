@@ -8,12 +8,12 @@
     <style>
         :root {
             --bg-color: #0a0a0a;
-            --card-bg: #1a1a1a;
+            --card-bg: #141414;
+            --border-color: #262626;
             --text-main: #ffffff;
-            --text-muted: #b0b0b0;
-            --accent-gold: #d4af37; /* Un toque de oro envejecido sutil */
-            --accent-blue: #00a8e1; /* Mercado Pago */
-            --success-color: #00c853;
+            --text-muted: #9ca3af;
+            --accent-blue: #009EE3; /* Mercado Pago */
+            --success-color: #00a650;
         }
 
         * {
@@ -31,103 +31,54 @@
             align-items: center;
             min-height: 100vh;
             padding: 20px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%23141414" width="100" height="100"/><circle cx="50" cy="50" r="1" fill="%23222222"/></svg>');
         }
 
         .container {
             width: 100%;
             max-width: 420px;
             background: var(--card-bg);
-            border: 2px solid #333;
+            border: 1px solid var(--border-color);
             padding: 35px 25px;
             border-radius: 20px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
             text-align: center;
-            position: relative;
         }
 
-        /* Contenedor del Logo (Centrado y fiel al diseño) */
-        .logo-container {
-            margin-bottom: 25px;
+        /* Contenedor oficial del Logo en la web */
+        .logo-wrapper {
+            margin-bottom: 20px;
         }
 
-        .barber-logo {
-            width: 140px;
-            height: 140px;
-            background: #ffffff;
+        .logo-wrapper img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
             border-radius: 50%;
-            margin: 0 auto 15px auto;
-            border: 8px solid #222;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 5px;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-
-        .logo-icon {
-            font-size: 45px;
-            line-height: 1;
-            margin-bottom: -5px;
-            color: #000;
-        }
-
-        .logo-text-main {
-            font-size: 15px;
-            line-height: 1.1;
-            color: #000;
-            letter-spacing: 1.5px;
-            font-weight: 900;
-        }
-
-        .logo-text-sub {
-            font-size: 9px;
-            line-height: 1.2;
-            color: #000;
-            letter-spacing: 2px;
-            font-weight: 700;
-            border-top: 1px solid #000;
-            border-bottom: 1px solid #000;
-            margin-top: 2px;
-            padding: 1px 0;
-            width: 75%;
-        }
-
-        .logo-estd {
-            font-size: 7px;
-            color: #000;
-            margin-top: 3px;
-            letter-spacing: 1px;
-        }
-
-        .divider {
-            width: 100%;
-            height: 1px;
-            background: #333;
-            margin: 25px 0;
+            background: #ffffff;
+            padding: 4px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            border: 3px solid #333;
         }
 
         .payment-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background-color: rgba(0, 168, 225, 0.1);
+            background-color: rgba(0, 158, 227, 0.12);
             color: var(--accent-blue);
-            padding: 8px 18px;
+            padding: 8px 16px;
             border-radius: 25px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             margin-bottom: 25px;
-            border: 1px solid rgba(0, 168, 225, 0.3);
+            border: 1px solid rgba(0, 158, 227, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .field-group {
             text-align: left;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         .field-group label {
@@ -135,7 +86,7 @@
             font-size: 11px;
             font-weight: 700;
             color: var(--text-muted);
-            margin-bottom: 7px;
+            margin-bottom: 6px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -143,47 +94,49 @@
         .copy-box {
             display: flex;
             align-items: center;
-            background: #141414;
-            border: 1px solid #333;
+            background: #1c1c1c;
+            border: 1px solid var(--border-color);
             border-radius: 10px;
             overflow: hidden;
-            transition: border-color 0.3s;
+            transition: border-color 0.2s;
         }
 
         .copy-box:focus-within {
-            border-color: var(--accent-gold);
+            border-color: #ffffff;
         }
 
         .copy-box input {
             width: 100%;
             border: none;
             background: transparent;
-            padding: 14px;
-            font-size: 15px;
+            padding: 12px 14px;
+            font-size: 14px;
             color: var(--text-main);
             outline: none;
             font-weight: 600;
         }
 
         .copy-btn {
-            background-color: var(--accent-gold);
-            color: var(--card-bg);
+            background-color: #ffffff;
+            color: #0b0b0b;
             border: none;
-            padding: 0 20px;
+            padding: 0 16px;
             height: 100%;
-            min-height: 48px;
-            font-size: 13px;
+            min-height: 46px;
+            font-size: 12px;
             font-weight: 800;
             cursor: pointer;
             transition: background-color 0.2s, transform 0.1s;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 5px;
             white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .copy-btn:hover {
-            background-color: #bf9c31;
+            background-color: #e0e0e0;
         }
 
         .copy-btn:active {
@@ -196,23 +149,23 @@
         }
 
         .instructions {
-            margin-top: 30px;
+            margin-top: 25px;
             font-size: 12px;
             color: var(--text-muted);
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid #333;
-            padding: 15px;
+            border: 1px solid var(--border-color);
+            padding: 14px;
             border-radius: 10px;
             text-align: left;
-            line-height: 1.5;
+            line-height: 1.4;
         }
 
         .instructions strong {
-            color: var(--accent-gold);
+            color: #ffffff;
         }
 
         footer {
-            margin-top: 25px;
+            margin-top: 22px;
             font-size: 11px;
             color: #666;
             letter-spacing: 1px;
@@ -224,23 +177,16 @@
 <body>
 
     <div class="container">
-        <!-- Logotipo Oficial -->
-        <div class="logo-container">
-            <div class="barber-logo">
-                <div class="logo-icon">🎩</div>
-                <div class="logo-text-main">EL TRUCO</div>
-                <div class="logo-text-sub">BARBERÍA</div>
-                <div class="logo-estd">ESTD 💈 2018</div>
-            </div>
+        <!-- Logo cargado directamente desde GitHub -->
+        <div class="logo-wrapper">
+            <img src="logo.png" alt="El Truco Barbería Logo">
         </div>
-
-        <div class="divider"></div>
 
         <div class="payment-badge">
             <span>💳</span> Mercado Pago
         </div>
 
-        <!-- Campo 1: Titular -->
+        <!-- Titular -->
         <div class="field-group">
             <label for="titular">Titular</label>
             <div class="copy-box">
@@ -249,25 +195,34 @@
             </div>
         </div>
 
-        <!-- Campo 2: RUT -->
+        <!-- RUT -->
         <div class="field-group">
-            <label for="rut">RUT / DNI</label>
+            <label for="rut">RUT</label>
             <div class="copy-box">
                 <input type="text" id="rut" value="294120262" readonly>
                 <button class="copy-btn" onclick="copyText('rut', this)">Copiar</button>
             </div>
         </div>
 
-        <!-- Campo 3: Cuenta -->
+        <!-- Tipo de Cuenta -->
         <div class="field-group">
-            <label for="cuenta">Número de cuenta</label>
+            <label for="tipo-cuenta">Tipo de cuenta</label>
             <div class="copy-box">
-                <input type="text" id="cuenta" value="1087437293" readonly>
-                <button class="copy-btn" onclick="copyText('cuenta', this)">Copiar</button>
+                <input type="text" id="tipo-cuenta" value="Cuenta Vista" readonly>
+                <button class="copy-btn" onclick="copyText('tipo-cuenta', this)">Copiar</button>
             </div>
         </div>
 
-         <!-- Campo 4: Correo -->
+        <!-- Número de cuenta -->
+        <div class="field-group">
+            <label for="num-cuenta">Número de cuenta</label>
+            <div class="copy-box">
+                <input type="text" id="num-cuenta" value="1087437293" readonly>
+                <button class="copy-btn" onclick="copyText('num-cuenta', this)">Copiar</button>
+            </div>
+        </div>
+
+        <!-- Correo -->
         <div class="field-group">
             <label for="correo">Correo electrónico</label>
             <div class="copy-box">
@@ -277,11 +232,11 @@
         </div>
 
         <div class="instructions">
-            <strong>⚠️ Importante:</strong> Una vez realizada la transferencia, por favor envía el comprobante por WhatsApp para confirmar tu atención en el local.
+            <strong>⚠️ Importante:</strong> Después de realizar la transferencia, recuerda enviar el comprobante para validar tu pago en el local.
         </div>
 
         <footer>
-            El Truco Barbería © 2018 - 2026
+            El Truco Barbería © 2026
         </footer>
     </div>
 
@@ -292,16 +247,12 @@
             navigator.clipboard.writeText(inputElement.value).then(() => {
                 const originalText = buttonElement.innerHTML;
                 
-                // Cambiar estado visual del botón
-                buttonElement.innerHTML = '✅ ¡Copiado!';
+                buttonElement.innerHTML = '¡Copiado!';
                 buttonElement.classList.add('copied');
-                buttonElement.style.pointerEvents = 'none'; // Evitar clics dobles
                 
-                // Restaurar después de 2 segundos
                 setTimeout(() => {
                     buttonElement.innerHTML = originalText;
                     buttonElement.classList.remove('copied');
-                    buttonElement.style.pointerEvents = 'auto';
                 }, 2000);
             }).catch(err => {
                 console.error('Error al copiar: ', err);
