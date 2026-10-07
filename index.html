@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagos - El Truco Barbería</title>
-    <!-- Fuente moderna -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Fuentes elegantes -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* === ESTILOS Y COLORES DE LA BARBERÍA (MODO OSCURO) === */
         :root {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --border-color: #2c2c2c;
+            --bg-color: #0b0b0b;
+            --card-bg: #141414;
+            --border-color: #262626;
             --text-main: #ffffff;
-            --text-muted: #aaaaaa;
-            --accent-color: #009EE3; /* Azul Mercado Pago */
-            --accent-dark: #007eb5;
+            --text-muted: #9ca3af;
+            --accent-gold: #c5a059; /* Tono elegante acorde al estilo */
+            --accent-blue: #009EE3; /* Mercado Pago */
             --success-color: #00a650;
         }
 
@@ -38,46 +37,72 @@
 
         .container {
             width: 100%;
-            max-width: 450px;
+            max-width: 440px;
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            padding: 35px 25px;
+            border-radius: 20px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
             text-align: center;
         }
 
+        /* Área del Logo Personalizado */
+        .logo-container {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .barber-logo-badge {
+            width: 90px;
+            height: 90px;
+            background: #1c1c1c;
+            border: 2px solid var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.2);
+        }
+
         .brand-header h1 {
-            font-size: 24px;
+            font-family: 'Cinzel', serif;
+            font-size: 22px;
             font-weight: 700;
             color: var(--text-main);
-            letter-spacing: 1px;
-            margin-bottom: 5px;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
         }
 
         .brand-header p {
-            font-size: 13px;
-            color: var(--text-muted);
+            font-size: 11px;
+            color: var(--accent-gold);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            font-weight: 600;
             margin-bottom: 20px;
         }
 
-        .badge {
-            display: inline-block;
-            background-color: rgba(0, 158, 227, 0.15);
-            color: var(--accent-color);
+        .mp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: rgba(0, 158, 227, 0.1);
+            color: var(--accent-blue);
             padding: 6px 14px;
             border-radius: 20px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
-            margin-bottom: 25px;
-            border: 1px solid rgba(0, 158, 227, 0.3);
+            margin-bottom: 22px;
+            border: 1px solid rgba(0, 158, 227, 0.2);
         }
 
         .field-group {
             text-align: left;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .field-group label {
@@ -95,7 +120,7 @@
         .copy-box {
             display: flex;
             align-items: center;
-            background: #262626;
+            background: #1a1a1a;
             border: 1px solid var(--border-color);
             border-radius: 10px;
             overflow: hidden;
@@ -103,39 +128,39 @@
         }
 
         .copy-box:focus-within {
-            border-color: var(--accent-color);
+            border-color: var(--accent-gold);
         }
 
         .copy-box input {
             width: 100%;
             border: none;
             background: transparent;
-            padding: 12px;
-            font-size: 15px;
+            padding: 11px 14px;
+            font-size: 14px;
             color: var(--text-main);
             outline: none;
             font-weight: 500;
         }
 
         .copy-btn {
-            background-color: var(--accent-color);
-            color: white;
+            background-color: var(--accent-gold);
+            color: #0b0b0b;
             border: none;
             padding: 0 16px;
             height: 100%;
-            min-height: 46px;
-            font-size: 14px;
-            font-weight: 600;
+            min-height: 44px;
+            font-size: 13px;
+            font-weight: 700;
             cursor: pointer;
-            transition: background-color 0.2s, transform 0.1s;
+            transition: opacity 0.2s, transform 0.1s;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             white-space: nowrap;
         }
 
         .copy-btn:hover {
-            background-color: var(--accent-dark);
+            opacity: 0.9;
         }
 
         .copy-btn:active {
@@ -144,39 +169,50 @@
 
         .copy-btn.copied {
             background-color: var(--success-color);
+            color: white;
         }
 
         .instructions {
-            margin-top: 25px;
-            font-size: 13px;
+            margin-top: 22px;
+            font-size: 12px;
             color: #d1d5db;
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.3);
+            background: rgba(197, 160, 89, 0.08);
+            border: 1px solid rgba(197, 160, 89, 0.2);
             padding: 12px;
             border-radius: 8px;
             text-align: left;
+            line-height: 1.4;
         }
 
         .instructions strong {
-            color: #fbbf24;
+            color: var(--accent-gold);
         }
 
         footer {
-            margin-top: 25px;
-            font-size: 12px;
+            margin-top: 22px;
+            font-size: 11px;
             color: #6b7280;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="brand-header">
-            <h1>EL TRUCO BARBERÍA</h1>
-            <p>Estd 2018</p>
+        <!-- Logo y Encabezado Personalizado -->
+        <div class="logo-container">
+            <div class="barber-logo-badge">
+                🎩
+            </div>
+            <div class="brand-header">
+                <h1>EL TRUCO BARBERÍA</h1>
+                <p>Est. 2018</p>
+            </div>
         </div>
 
-        <div class="badge">Mercado Pago</div>
+        <div class="mp-badge">
+            <span>💳</span> Mercado Pago - Transferencias
+        </div>
 
         <!-- Titular -->
         <div class="field-group">
@@ -224,11 +260,11 @@
         </div>
 
         <div class="instructions">
-            <strong>⚠️ Importante:</strong> Después de realizar tu transferencia, recuerda enviarnos el comprobante para validar tu pago en el local.
+            <strong>⚠️ Importante:</strong> Después de realizar tu transferencia, recuerda enviar el comprobante al barbero para validar tu servicio.
         </div>
 
         <footer>
-            El Truco Barbería © 2026
+            El Truco Barbería • Todos los derechos reservados
         </footer>
     </div>
 
