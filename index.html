@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagos - El Truco Barbería</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #0b0b0b;
-            --card-bg: #141414;
-            --border-color: #262626;
+            --bg-color: #0a0a0a;
+            --card-bg: #1a1a1a;
             --text-main: #ffffff;
-            --text-muted: #888888;
-            --accent-blue: #009EE3; /* Mercado Pago */
-            --success-color: #00a650;
+            --text-muted: #b0b0b0;
+            --accent-gold: #d4af37; /* Un toque de oro envejecido sutil */
+            --accent-blue: #00a8e1; /* Mercado Pago */
+            --success-color: #00c853;
         }
 
         * {
@@ -31,121 +31,111 @@
             align-items: center;
             min-height: 100vh;
             padding: 20px;
-            /* Patrón sutil de fondo inspirado en las herramientas de la barbería */
-            background-image: radial-gradient(circle at 50% 50%, #161616 0%, #0b0b0b 100%);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="%23141414" width="100" height="100"/><circle cx="50" cy="50" r="1" fill="%23222222"/></svg>');
         }
 
         .container {
             width: 100%;
-            max-width: 440px;
+            max-width: 420px;
             background: var(--card-bg);
-            border: 2px solid var(--border-color);
+            border: 2px solid #333;
             padding: 35px 25px;
             border-radius: 20px;
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
             text-align: center;
             position: relative;
         }
 
-        /* Réplica exacta del Emblema / Logo de la Barbería */
-        .logo-emblem {
-            width: 120px;
-            height: 120px;
+        /* Contenedor del Logo (Centrado y fiel al diseño) */
+        .logo-container {
+            margin-bottom: 25px;
+        }
+
+        .barber-logo {
+            width: 140px;
+            height: 140px;
             background: #ffffff;
-            color: #000000;
             border-radius: 50%;
-            margin: 0 auto 18px auto;
+            margin: 0 auto 15px auto;
+            border: 8px solid #222;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            border: 4px solid #1a1a1a;
-            box-shadow: 0 0 0 2px #ffffff, 0 8px 25px rgba(0,0,0,0.5);
-            position: relative;
-            padding: 10px;
-        }
-
-        .logo-emblem .hat {
-            font-size: 32px;
-            line-height: 1;
-            margin-bottom: -2px;
-        }
-
-        .logo-emblem .brand-title {
-            font-size: 13px;
+            padding: 5px;
             font-weight: 900;
-            letter-spacing: 1.5px;
             text-transform: uppercase;
-            line-height: 1.1;
         }
 
-        .logo-emblem .brand-subtitle {
+        .logo-icon {
+            font-size: 45px;
+            line-height: 1;
+            margin-bottom: -5px;
+            color: #000;
+        }
+
+        .logo-text-main {
+            font-size: 15px;
+            line-height: 1.1;
+            color: #000;
+            letter-spacing: 1.5px;
+            font-weight: 900;
+        }
+
+        .logo-text-sub {
             font-size: 9px;
-            font-weight: 800;
+            line-height: 1.2;
+            color: #000;
             letter-spacing: 2px;
-            text-transform: uppercase;
+            font-weight: 700;
             border-top: 1px solid #000;
             border-bottom: 1px solid #000;
             margin-top: 2px;
             padding: 1px 0;
-            width: 80%;
+            width: 75%;
         }
 
-        .logo-emblem .estd {
+        .logo-estd {
             font-size: 7px;
-            font-weight: 700;
+            color: #000;
+            margin-top: 3px;
             letter-spacing: 1px;
-            margin-top: 2px;
         }
 
-        .section-divider {
-            width: 60%;
+        .divider {
+            width: 100%;
             height: 1px;
-            background: var(--border-color);
-            margin: 20px auto;
-            position: relative;
+            background: #333;
+            margin: 25px 0;
         }
 
-        .section-divider::after {
-            content: "✂️";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--card-bg);
-            padding: 0 8px;
-            font-size: 10px;
-        }
-
-        .payment-heading {
-            font-size: 18px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            color: var(--text-main);
-            margin-bottom: 4px;
-            text-transform: uppercase;
-        }
-
-        .account-owner {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--text-muted);
-            margin-bottom: 22px;
+        .payment-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(0, 168, 225, 0.1);
+            color: var(--accent-blue);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            border: 1px solid rgba(0, 168, 225, 0.3);
         }
 
         .field-group {
             text-align: left;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
         .field-group label {
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            display: block;
             font-size: 11px;
             font-weight: 700;
             color: var(--text-muted);
-            margin-bottom: 6px;
+            margin-bottom: 7px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -153,49 +143,47 @@
         .copy-box {
             display: flex;
             align-items: center;
-            background: #1c1c1c;
-            border: 1px solid var(--border-color);
+            background: #141414;
+            border: 1px solid #333;
             border-radius: 10px;
             overflow: hidden;
-            transition: border-color 0.2s;
+            transition: border-color 0.3s;
         }
 
         .copy-box:focus-within {
-            border-color: #ffffff;
+            border-color: var(--accent-gold);
         }
 
         .copy-box input {
             width: 100%;
             border: none;
             background: transparent;
-            padding: 12px 14px;
-            font-size: 14px;
+            padding: 14px;
+            font-size: 15px;
             color: var(--text-main);
             outline: none;
             font-weight: 600;
         }
 
         .copy-btn {
-            background-color: #ffffff;
-            color: #0b0b0b;
+            background-color: var(--accent-gold);
+            color: var(--card-bg);
             border: none;
-            padding: 0 16px;
+            padding: 0 20px;
             height: 100%;
-            min-height: 46px;
-            font-size: 12px;
+            min-height: 48px;
+            font-size: 13px;
             font-weight: 800;
             cursor: pointer;
             transition: background-color 0.2s, transform 0.1s;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
             white-space: nowrap;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .copy-btn:hover {
-            background-color: #e0e0e0;
+            background-color: #bf9c31;
         }
 
         .copy-btn:active {
@@ -208,25 +196,25 @@
         }
 
         .instructions {
-            margin-top: 22px;
+            margin-top: 30px;
             font-size: 12px;
-            color: #d1d5db;
+            color: var(--text-muted);
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
-            padding: 12px;
-            border-radius: 8px;
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 10px;
             text-align: left;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
         .instructions strong {
-            color: #ffffff;
+            color: var(--accent-gold);
         }
 
         footer {
-            margin-top: 22px;
+            margin-top: 25px;
             font-size: 11px;
-            color: #555555;
+            color: #666;
             letter-spacing: 1px;
             text-transform: uppercase;
             font-weight: 600;
@@ -236,49 +224,52 @@
 <body>
 
     <div class="container">
-        <!-- Logotipo Oficial Estilizado -->
-        <div class="logo-emblem">
-            <div class="hat">🎩</div>
-            <div class="brand-title">EL TRUCO</div>
-            <div class="brand-subtitle">BARBERÍA</div>
-            <div class="estd">ESTD 2018</div>
+        <!-- Logotipo Oficial -->
+        <div class="logo-container">
+            <div class="barber-logo">
+                <div class="logo-icon">🎩</div>
+                <div class="logo-text-main">EL TRUCO</div>
+                <div class="logo-text-sub">BARBERÍA</div>
+                <div class="logo-estd">ESTD 💈 2018</div>
+            </div>
         </div>
 
-        <div class="section-divider"></div>
+        <div class="divider"></div>
 
-        <div class="payment-heading">Mercado Pago</div>
-        <div class="account-owner">Ismael Condori Huarayo</div>
+        <div class="payment-badge">
+            <span>💳</span> Mercado Pago
+        </div>
 
-        <!-- RUT -->
+        <!-- Campo 1: Titular -->
         <div class="field-group">
-            <label>🆔 RUT</label>
+            <label for="titular">Titular</label>
+            <div class="copy-box">
+                <input type="text" id="titular" value="Ismael Condori Huarayo" readonly>
+                <button class="copy-btn" onclick="copyText('titular', this)">Copiar</button>
+            </div>
+        </div>
+
+        <!-- Campo 2: RUT -->
+        <div class="field-group">
+            <label for="rut">RUT / DNI</label>
             <div class="copy-box">
                 <input type="text" id="rut" value="294120262" readonly>
                 <button class="copy-btn" onclick="copyText('rut', this)">Copiar</button>
             </div>
         </div>
 
-        <!-- Tipo de Cuenta -->
+        <!-- Campo 3: Cuenta -->
         <div class="field-group">
-            <label>🏦 Tipo de cuenta</label>
+            <label for="cuenta">Número de cuenta</label>
             <div class="copy-box">
-                <input type="text" id="tipo-cuenta" value="Cuenta Vista" readonly>
-                <button class="copy-btn" onclick="copyText('tipo-cuenta', this)">Copiar</button>
+                <input type="text" id="cuenta" value="1087437293" readonly>
+                <button class="copy-btn" onclick="copyText('cuenta', this)">Copiar</button>
             </div>
         </div>
 
-        <!-- Número de cuenta -->
+         <!-- Campo 4: Correo -->
         <div class="field-group">
-            <label>💳 Número de cuenta</label>
-            <div class="copy-box">
-                <input type="text" id="num-cuenta" value="1087437293" readonly>
-                <button class="copy-btn" onclick="copyText('num-cuenta', this)">Copiar</button>
-            </div>
-        </div>
-
-        <!-- Correo -->
-        <div class="field-group">
-            <label>✉️ Correo electrónico</label>
+            <label for="correo">Correo electrónico</label>
             <div class="copy-box">
                 <input type="text" id="correo" value="ismael558@icloud.com" readonly>
                 <button class="copy-btn" onclick="copyText('correo', this)">Copiar</button>
@@ -286,7 +277,7 @@
         </div>
 
         <div class="instructions">
-            <strong>⚠️ Importante:</strong> Envía tu comprobante de transferencia al barbero para confirmar tu atención.
+            <strong>⚠️ Importante:</strong> Una vez realizada la transferencia, por favor envía el comprobante por WhatsApp para confirmar tu atención en el local.
         </div>
 
         <footer>
@@ -301,12 +292,16 @@
             navigator.clipboard.writeText(inputElement.value).then(() => {
                 const originalText = buttonElement.innerHTML;
                 
-                buttonElement.innerHTML = '¡Copiado!';
+                // Cambiar estado visual del botón
+                buttonElement.innerHTML = '✅ ¡Copiado!';
                 buttonElement.classList.add('copied');
+                buttonElement.style.pointerEvents = 'none'; // Evitar clics dobles
                 
+                // Restaurar después de 2 segundos
                 setTimeout(() => {
                     buttonElement.innerHTML = originalText;
                     buttonElement.classList.remove('copied');
+                    buttonElement.style.pointerEvents = 'auto';
                 }, 2000);
             }).catch(err => {
                 console.error('Error al copiar: ', err);
