@@ -44,19 +44,20 @@
             text-align: center;
         }
 
+        /* Contenedor circular perfecto para el logo */
         .logo-wrapper {
             margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
         }
 
         .logo-wrapper img {
             width: 140px;
             height: 140px;
-            object-fit: contain;
+            object-fit: cover;
             border-radius: 50%;
-            background: #ffffff;
-            padding: 4px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-            border: 3px solid #333;
+            border: 4px solid #ffffff;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.7);
         }
 
         .payment-badge {
@@ -176,9 +177,9 @@
 <body>
 
     <div class="container">
-        <!-- Logo alojado localmente en GitHub -->
+        <!-- Logo perfectamente adaptado al círculo -->
         <div class="logo-wrapper">
-            <img src="logo.png" alt="El Truco Barbería Logo">
+            <img src="logo.jpg" alt="El Truco Barbería Logo">
         </div>
 
         <div class="payment-badge">
