@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagos - El Truco Barbería</title>
-    <!-- Fuentes elegantes -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #0b0b0b;
             --card-bg: #141414;
             --border-color: #262626;
             --text-main: #ffffff;
-            --text-muted: #9ca3af;
-            --accent-gold: #c5a059; /* Tono elegante acorde al estilo */
+            --text-muted: #888888;
             --accent-blue: #009EE3; /* Mercado Pago */
             --success-color: #00a650;
         }
@@ -22,7 +20,7 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
 
         body {
@@ -33,76 +31,111 @@
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+            /* Patrón sutil de fondo inspirado en las herramientas de la barbería */
+            background-image: radial-gradient(circle at 50% 50%, #161616 0%, #0b0b0b 100%);
         }
 
         .container {
             width: 100%;
             max-width: 440px;
             background: var(--card-bg);
-            border: 1px solid var(--border-color);
+            border: 2px solid var(--border-color);
             padding: 35px 25px;
             border-radius: 20px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.8);
             text-align: center;
+            position: relative;
         }
 
-        /* Área del Logo Personalizado */
-        .logo-container {
-            margin-bottom: 20px;
+        /* Réplica exacta del Emblema / Logo de la Barbería */
+        .logo-emblem {
+            width: 120px;
+            height: 120px;
+            background: #ffffff;
+            color: #000000;
+            border-radius: 50%;
+            margin: 0 auto 18px auto;
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-
-        .barber-logo-badge {
-            width: 90px;
-            height: 90px;
-            background: #1c1c1c;
-            border: 2px solid var(--accent-gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            font-size: 36px;
-            margin-bottom: 12px;
-            box-shadow: 0 4px 15px rgba(197, 160, 89, 0.2);
+            border: 4px solid #1a1a1a;
+            box-shadow: 0 0 0 2px #ffffff, 0 8px 25px rgba(0,0,0,0.5);
+            position: relative;
+            padding: 10px;
         }
 
-        .brand-header h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--text-main);
-            letter-spacing: 2px;
-            margin-bottom: 4px;
+        .logo-emblem .hat {
+            font-size: 32px;
+            line-height: 1;
+            margin-bottom: -2px;
         }
 
-        .brand-header p {
-            font-size: 11px;
-            color: var(--accent-gold);
+        .logo-emblem .brand-title {
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: 600;
-            margin-bottom: 20px;
+            line-height: 1.1;
         }
 
-        .mp-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background-color: rgba(0, 158, 227, 0.1);
-            color: var(--accent-blue);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
+        .logo-emblem .brand-subtitle {
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+            margin-top: 2px;
+            padding: 1px 0;
+            width: 80%;
+        }
+
+        .logo-emblem .estd {
+            font-size: 7px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        .section-divider {
+            width: 60%;
+            height: 1px;
+            background: var(--border-color);
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .section-divider::after {
+            content: "✂️";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--card-bg);
+            padding: 0 8px;
+            font-size: 10px;
+        }
+
+        .payment-heading {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--text-main);
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .account-owner {
+            font-size: 15px;
             font-weight: 600;
+            color: var(--text-muted);
             margin-bottom: 22px;
-            border: 1px solid rgba(0, 158, 227, 0.2);
         }
 
         .field-group {
             text-align: left;
-            margin-bottom: 14px;
+            margin-bottom: 15px;
         }
 
         .field-group label {
@@ -110,7 +143,7 @@
             align-items: center;
             gap: 6px;
             font-size: 11px;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text-muted);
             margin-bottom: 6px;
             text-transform: uppercase;
@@ -120,7 +153,7 @@
         .copy-box {
             display: flex;
             align-items: center;
-            background: #1a1a1a;
+            background: #1c1c1c;
             border: 1px solid var(--border-color);
             border-radius: 10px;
             overflow: hidden;
@@ -128,39 +161,41 @@
         }
 
         .copy-box:focus-within {
-            border-color: var(--accent-gold);
+            border-color: #ffffff;
         }
 
         .copy-box input {
             width: 100%;
             border: none;
             background: transparent;
-            padding: 11px 14px;
+            padding: 12px 14px;
             font-size: 14px;
             color: var(--text-main);
             outline: none;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .copy-btn {
-            background-color: var(--accent-gold);
+            background-color: #ffffff;
             color: #0b0b0b;
             border: none;
             padding: 0 16px;
             height: 100%;
-            min-height: 44px;
-            font-size: 13px;
-            font-weight: 700;
+            min-height: 46px;
+            font-size: 12px;
+            font-weight: 800;
             cursor: pointer;
-            transition: opacity 0.2s, transform 0.1s;
+            transition: background-color 0.2s, transform 0.1s;
             display: flex;
             align-items: center;
             gap: 5px;
             white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .copy-btn:hover {
-            opacity: 0.9;
+            background-color: #e0e0e0;
         }
 
         .copy-btn:active {
@@ -176,8 +211,8 @@
             margin-top: 22px;
             font-size: 12px;
             color: #d1d5db;
-            background: rgba(197, 160, 89, 0.08);
-            border: 1px solid rgba(197, 160, 89, 0.2);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
             padding: 12px;
             border-radius: 8px;
             text-align: left;
@@ -185,43 +220,34 @@
         }
 
         .instructions strong {
-            color: var(--accent-gold);
+            color: #ffffff;
         }
 
         footer {
             margin-top: 22px;
             font-size: 11px;
-            color: #6b7280;
-            letter-spacing: 0.5px;
+            color: #555555;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Logo y Encabezado Personalizado -->
-        <div class="logo-container">
-            <div class="barber-logo-badge">
-                🎩
-            </div>
-            <div class="brand-header">
-                <h1>EL TRUCO BARBERÍA</h1>
-                <p>Est. 2018</p>
-            </div>
+        <!-- Logotipo Oficial Estilizado -->
+        <div class="logo-emblem">
+            <div class="hat">🎩</div>
+            <div class="brand-title">EL TRUCO</div>
+            <div class="brand-subtitle">BARBERÍA</div>
+            <div class="estd">ESTD 2018</div>
         </div>
 
-        <div class="mp-badge">
-            <span>💳</span> Mercado Pago - Transferencias
-        </div>
+        <div class="section-divider"></div>
 
-        <!-- Titular -->
-        <div class="field-group">
-            <label>👤 Titular</label>
-            <div class="copy-box">
-                <input type="text" id="titular" value="Ismael Condori Huarayo" readonly>
-                <button class="copy-btn" onclick="copyText('titular', this)">Copiar</button>
-            </div>
-        </div>
+        <div class="payment-heading">Mercado Pago</div>
+        <div class="account-owner">Ismael Condori Huarayo</div>
 
         <!-- RUT -->
         <div class="field-group">
@@ -260,11 +286,11 @@
         </div>
 
         <div class="instructions">
-            <strong>⚠️ Importante:</strong> Después de realizar tu transferencia, recuerda enviar el comprobante al barbero para validar tu servicio.
+            <strong>⚠️ Importante:</strong> Envía tu comprobante de transferencia al barbero para confirmar tu atención.
         </div>
 
         <footer>
-            El Truco Barbería • Todos los derechos reservados
+            El Truco Barbería © 2018 - 2026
         </footer>
     </div>
 
