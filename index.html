@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagos - El Truco Barbería</title>
+    <!-- Fuente moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* === ESTILOS Y COLORES DE LA BARBERÍA (MODO OSCURO) === */
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --border-color: #2c2c2c;
+            --text-main: #ffffff;
+            --text-muted: #aaaaaa;
+            --accent-color: #009EE3; /* Azul Mercado Pago */
+            --accent-dark: #007eb5;
+            --success-color: #00a650;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        .brand-header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .brand-header p {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(0, 158, 227, 0.15);
+            color: var(--accent-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            border: 1px solid rgba(0, 158, 227, 0.3);
+        }
+
+        .field-group {
+            text-align: left;
+            margin-bottom: 16px;
+        }
+
+        .field-group label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .copy-box {
+            display: flex;
+            align-items: center;
+            background: #262626;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .copy-box:focus-within {
+            border-color: var(--accent-color);
+        }
+
+        .copy-box input {
+            width: 100%;
+            border: none;
+            background: transparent;
+            padding: 12px;
+            font-size: 15px;
+            color: var(--text-main);
+            outline: none;
+            font-weight: 500;
+        }
+
+        .copy-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0 16px;
+            height: 100%;
+            min-height: 46px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background-color: var(--accent-dark);
+        }
+
+        .copy-btn:active {
+            transform: scale(0.98);
+        }
+
+        .copy-btn.copied {
+            background-color: var(--success-color);
+        }
+
+        .instructions {
+            margin-top: 25px;
+            font-size: 13px;
+            color: #d1d5db;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        .instructions strong {
+            color: #fbbf24;
+        }
+
+        footer {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="brand-header">
+            <h1>EL TRUCO BARBERÍA</h1>
+            <p>Estd 2018</p>
+        </div>
+
+        <div class="badge">Mercado Pago</div>
+
+        <!-- Titular -->
+        <div class="field-group">
+            <label>👤 Titular</label>
+            <div class="copy-box">
+                <input type="text" id="titular" value="Ismael Condori Huarayo" readonly>
+                <button class="copy-btn" onclick="copyText('titular', this)">Copiar</button>
+            </div>
+        </div>
+
+        <!-- RUT -->
+        <div class="field-group">
+            <label>🆔 RUT</label>
+            <div class="copy-box">
+                <input type="text" id="rut" value="294120262" readonly>
+                <button class="copy-btn" onclick="copyText('rut', this)">Copiar</button>
+            </div>
+        </div>
+
+        <!-- Tipo de Cuenta -->
+        <div class="field-group">
+            <label>🏦 Tipo de cuenta</label>
+            <div class="copy-box">
+                <input type="text" id="tipo-cuenta" value="Cuenta Vista" readonly>
+                <button class="copy-btn" onclick="copyText('tipo-cuenta', this)">Copiar</button>
+            </div>
+        </div>
+
+        <!-- Número de cuenta -->
+        <div class="field-group">
+            <label>💳 Número de cuenta</label>
+            <div class="copy-box">
+                <input type="text" id="num-cuenta" value="1087437293" readonly>
+                <button class="copy-btn" onclick="copyText('num-cuenta', this)">Copiar</button>
+            </div>
+        </div>
+
+        <!-- Correo -->
+        <div class="field-group">
+            <label>✉️ Correo electrónico</label>
+            <div class="copy-box">
+                <input type="text" id="correo" value="ismael558@icloud.com" readonly>
+                <button class="copy-btn" onclick="copyText('correo', this)">Copiar</button>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <strong>⚠️ Importante:</strong> Después de realizar tu transferencia, recuerda enviarnos el comprobante para validar tu pago en el local.
+        </div>
+
+        <footer>
+            El Truco Barbería © 2026
+        </footer>
+    </div>
+
+    <script>
+        function copyText(elementId, buttonElement) {
+            const inputElement = document.getElementById(elementId);
+            
+            navigator.clipboard.writeText(inputElement.value).then(() => {
+                const originalText = buttonElement.innerHTML;
+                
+                buttonElement.innerHTML = '¡Copiado!';
+                buttonElement.classList.add('copied');
+                
+                setTimeout(() => {
+                    buttonElement.innerHTML = originalText;
+                    buttonElement.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Error al copiar: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
