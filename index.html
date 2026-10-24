@@ -4,153 +4,375 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagos - El Truco Barbería</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
-        /* Estilos generales */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f0f2f5;
-            color: #333;
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: #141414;
+            --border-color: #262626;
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --accent-blue: #009EE3;
+            --whatsapp-color: #25D366;
+            --whatsapp-hover: #1EBE5D;
+            --success-color: #00a650;
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            padding: 20px;
         }
 
-        .contenedor {
-            background-color: #ffffff;
+        .container {
             width: 100%;
-            max-width: 400px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            padding: 30px 20px;
+            max-width: 420px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 35px 25px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
             text-align: center;
         }
 
-        /* Logo y título */
-        .logo {
-            width: 120px;
-            height: auto;
+        .logo-wrapper {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo-wrapper img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
             border-radius: 50%;
-            margin-bottom: 15px;
+            border: 4px solid #ffffff;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.7);
         }
 
-        .titulo-pago {
-            font-size: 18px;
-            font-weight: bold;
-            color: #009ee3; /* Color de Mercado Pago */
-            margin-bottom: 25px;
+        .payment-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(0, 158, 227, 0.12);
+            color: var(--accent-blue);
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0, 158, 227, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Botón copiar todo */
+        .copy-all-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-        }
-
-        /* Bloque de datos unificado */
-        .bloque-datos {
-            background-color: #f8f9fa;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 15px;
-            text-align: left;
-            font-family: monospace;
-            font-size: 15px;
-            line-height: 1.6;
-            white-space: pre-line;
-            color: #444;
-            margin-bottom: 15px;
-        }
-
-        /* Botón de copiar */
-        .btn-copiar {
-            background-color: #f39c12;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 14px;
+            gap: 10px;
             width: 100%;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            transition: background-color 0.3s ease;
-            margin-bottom: 25px;
-        }
-
-        .btn-copiar:hover {
-            background-color: #e67e22;
-        }
-
-        /* Advertencia y botón WhatsApp */
-        .advertencia {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-
-        .btn-whatsapp {
-            background-color: #25D366;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
+            background-color: #ffffff;
+            color: #0b0b0b;
+            border: none;
             padding: 14px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 16px;
-            font-weight: bold;
-            gap: 8px;
-            transition: background-color 0.3s;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.12);
+            transition: background-color 0.2s, transform 0.1s;
         }
 
-        .btn-whatsapp:hover {
-            background-color: #128C7E;
+        .copy-all-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        .copy-all-btn:active {
+            transform: scale(0.98);
+        }
+
+        .copy-all-btn.copied {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            font-size: 10px;
+            font-weight: 700;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
+        }
+
+        .field-group {
+            text-align: left;
+            margin-bottom: 16px;
+        }
+
+        .field-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .copy-box {
+            display: flex;
+            align-items: center;
+            background: #1c1c1c;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .copy-box:focus-within {
+            border-color: #ffffff;
+        }
+
+        .copy-box input {
+            width: 100%;
+            border: none;
+            background: transparent;
+            padding: 12px 14px;
+            font-size: 14px;
+            color: var(--text-main);
+            outline: none;
+            font-weight: 600;
+        }
+
+        .copy-btn {
+            background-color: #ffffff;
+            color: #0b0b0b;
+            border: none;
+            padding: 0 16px;
+            height: 100%;
+            min-height: 46px;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .copy-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        .copy-btn:active {
+            transform: scale(0.98);
+        }
+
+        .copy-btn.copied {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .instructions {
+            margin-top: 25px;
+            font-size: 12px;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 14px;
+            border-radius: 10px;
+            text-align: left;
+            line-height: 1.4;
+        }
+
+        .instructions strong {
+            color: #ffffff;
+        }
+
+        /* Botón de WhatsApp */
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: var(--whatsapp-color);
+            color: white;
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            margin-top: 16px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: var(--whatsapp-hover);
+        }
+
+        .whatsapp-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Botón de reservas */
+        .booking-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: transparent;
+            color: var(--text-main);
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 22px;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .booking-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .booking-btn:active {
+            transform: scale(0.98);
         }
 
         footer {
-            margin-top: 25px;
-            font-size: 12px;
-            color: #999;
+            margin-top: 22px;
+            font-size: 11px;
+            color: #666;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
         }
     </style>
 </head>
 <body>
 
-    <div class="contenedor">
-        <!-- Reemplaza "logo.jpg" con la ruta real de tu imagen si es diferente -->
-        <img alt="El Truco Barbería Logo" src="logo.jpg" class="logo">
-        
-        <div class="titulo-pago">
-            <span>💳</span> Transferencia o Mercado Pago
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo-wrapper">
+            <img src="logo.jpg" alt="El Truco Barbería Logo">
         </div>
 
-        <!-- CUADRO CON TODOS LOS DATOS -->
-        <div id="datos-completos" class="bloque-datos">Nombre: [Nombre del Titular]
-RUT: [12.345.678-9]
-Banco: [Nombre del Banco]
-Tipo: [Cuenta Corriente / Vista]
-Cuenta: [123456789]
-Correo: [correo@eltruco.com]</div>
+        <div class="payment-badge">
+            <span>💳</span> Mercado Pago
+        </div>
 
-        <!-- BOTÓN PARA COPIAR -->
-        <button class="btn-copiar" id="btn-copiar-todo" onclick="copiarTodosLosDatos()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            Copiar todos los datos
+        <!-- Copiar todos los datos en un solo bloque -->
+        <button class="copy-all-btn" id="copy-all" type="button" onclick="copyAll(this)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span class="label">Copiar todos los datos</span>
         </button>
 
-        <!-- SECCIÓN DE COMPROBANTE -->
-        <div class="advertencia">
+        <!-- Botón de Reservas -->
+        <a href="https://eltrucobarber.site.agendapro.com/cl" class="booking-btn" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            Reservar tu hora
+        </a>
+
+        <div class="divider">o copia uno por uno</div>
+
+        <!-- Titular -->
+        <div class="field-group">
+            <label for="titular">Titular</label>
+            <div class="copy-box">
+                <input type="text" id="titular" value="Ismael Condori Huarayo" readonly>
+                <button class="copy-btn" onclick="copyText('titular', this)">Copiar</button>
+            </div>
+        </div>
+
+        <!-- RUT -->
+        <div class="field-group">
+            <label for="rut">RUT</label>
+            <div class="copy-box">
+                <input type="text" id="rut" value="294120262" readonly>
+                <button class="copy-btn" onclick="copyText('rut', this)">Copiar</button>
+            </div>
+        </div>
+
+        <!-- Tipo de Cuenta -->
+        <div class="field-group">
+            <label for="tipo-cuenta">Tipo de cuenta</label>
+            <div class="copy-box">
+                <input type="text" id="tipo-cuenta" value="Cuenta Vista" readonly>
+                <button class="copy-btn" onclick="copyText('tipo-cuenta', this)">Copiar</button>
+            </div>
+        </div>
+
+        <!-- Número de cuenta -->
+        <div class="field-group">
+            <label for="num-cuenta">Número de cuenta</label>
+            <div class="copy-box">
+                <input type="text" id="num-cuenta" value="1087437293" readonly>
+                <button class="copy-btn" onclick="copyText('num-cuenta', this)">Copiar</button>
+            </div>
+        </div>
+
+        <!-- Correo -->
+        <div class="field-group">
+            <label for="correo">Correo electrónico</label>
+            <div class="copy-box">
+                <input type="text" id="correo" value="ismael558@icloud.com" readonly>
+                <button class="copy-btn" onclick="copyText('correo', this)">Copiar</button>
+            </div>
+        </div>
+
+        <div class="instructions">
             <strong>⚠️ Importante:</strong> Después de realizar la transferencia, envíanos tu comprobante haciendo clic en el botón de abajo.
         </div>
 
-        <a href="https://wa.me/56922108626?text=Hola,%20adjunto%20el%20comprobante%20de%20mi%20transferencia%20para%20El%20Truco%20Barbería." target="_blank" class="btn-whatsapp">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-            Enviar Comprobante
+        <!-- Botón Directo de WhatsApp -->
+        <a href="https://wa.me/56922108626?text=Hola,%20adjunto%20el%20comprobante%20de%20mi%20transferencia%20para%20El%20Truco%20Barbería." class="whatsapp-btn" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.012-.304.087-.403.088-.088.197-.23.296-.345.1-.115.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.078.38-.057 1.17-.478 1.338-.94.17-.463.17-.86.119-.948-.05-.084-.182-.133-.38-.232z"/>
+            </svg>
+            Enviar Comprobante por WhatsApp
         </a>
 
         <footer>
@@ -158,25 +380,74 @@ Correo: [correo@eltruco.com]</div>
         </footer>
     </div>
 
-    <!-- SCRIPT PARA QUE FUNCIONE EL BOTÓN DE COPIAR -->
     <script>
-        function copiarTodosLosDatos() {
-            const texto = document.getElementById("datos-completos").innerText;
-            
-            navigator.clipboard.writeText(texto).then(() => {
-                const boton = document.getElementById("btn-copiar-todo");
-                const htmlOriginal = boton.innerHTML;
-                
-                boton.innerHTML = "¡Copiado con éxito! ✅";
-                boton.style.backgroundColor = "#28a745"; 
-                
-                setTimeout(() => {
-                    boton.innerHTML = htmlOriginal;
-                    boton.style.backgroundColor = ""; 
-                }, 2500);
-            }).catch(err => {
-                console.error("Error al copiar: ", err);
-                alert("No se pudo copiar. Inténtalo seleccionando el texto manualmente.");
+        // Copia con respaldo para navegadores/contextos donde clipboard API no está disponible
+        function writeToClipboard(text) {
+            if (navigator.clipboard && window.isSecureContext) {
+                return navigator.clipboard.writeText(text);
+            }
+            return new Promise(function (resolve, reject) {
+                var ta = document.createElement('textarea');
+                ta.value = text;
+                ta.setAttribute('readonly', '');
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                ta.setSelectionRange(0, text.length);
+                try {
+                    document.execCommand('copy') ? resolve() : reject(new Error('copy failed'));
+                } catch (e) {
+                    reject(e);
+                } finally {
+                    document.body.removeChild(ta);
+                }
+            });
+        }
+
+        function copyText(elementId, buttonElement) {
+            var inputElement = document.getElementById(elementId);
+
+            writeToClipboard(inputElement.value).then(function () {
+                var originalText = buttonElement.innerHTML;
+
+                buttonElement.innerHTML = '¡Copiado!';
+                buttonElement.classList.add('copied');
+
+                setTimeout(function () {
+                    buttonElement.innerHTML = originalText;
+                    buttonElement.classList.remove('copied');
+                }, 2000);
+            }).catch(function (err) {
+                console.error('Error al copiar: ', err);
+            });
+        }
+
+        function copyAll(buttonElement) {
+            var value = function (id) { return document.getElementById(id).value; };
+
+            var text = [
+                value('titular'),
+                'RUT: ' + value('rut'),
+                'Mercado Pago',
+                value('tipo-cuenta'),
+                'Número de cuenta: ' + value('num-cuenta'),
+                value('correo')
+            ].join('\n');
+
+            writeToClipboard(text).then(function () {
+                var label = buttonElement.querySelector('.label');
+                var originalText = label.textContent;
+
+                label.textContent = '¡Datos copiados!';
+                buttonElement.classList.add('copied');
+
+                setTimeout(function () {
+                    label.textContent = originalText;
+                    buttonElement.classList.remove('copied');
+                }, 2000);
+            }).catch(function (err) {
+                console.error('Error al copiar: ', err);
             });
         }
     </script>
